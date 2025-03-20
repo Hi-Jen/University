@@ -1,0 +1,117 @@
+/* style.css - 전체 페이지에 적용할 CSS */
+
+/* 전체적인 스타일 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+}
+
+/* 제목 스타일 */
+h1, h2 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* 폼 스타일 */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-color: #6a67ce;
+    box-shadow: 0 0 8px rgba(106, 103, 206, 0.2);
+}
+
+/* 버튼 스타일 */
+button {
+    background-color: #6a67ce;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+button:hover {
+    background-color: #5754c8;
+}
+
+button:active {
+    background-color: #4c49b3;
+}
+
+/* 투표 항목 스타일 */
+form label {
+    display: block;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #6a67ce;
+}
+
+/* 그래프 캔버스 스타일 */
+canvas {
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+/* 로그인 및 회원가입 링크 스타일 */
+a {
+    color: #6a67ce;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 결과 페이지의 그래프 스타일 */
+#voteChart {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* 반응형 설정 */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+}
