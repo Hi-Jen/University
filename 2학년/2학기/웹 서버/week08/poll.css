@@ -1,0 +1,68 @@
+table {
+    font-size: 11pt;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 20px 0px 20px 0px;
+}
+
+table,
+th,
+td {
+    border: 1px solid gray;
+}
+
+td,
+th {
+    padding: 3px 5px 3px 5px;
+}
+
+th {
+    text-align: center;
+    background-color: lightcyan;
+    font-weight: normal;
+}
+
+th {
+    text-align: center;
+    background-color: lightcyan;
+    font-weight: normal;
+}
+
+.pollTable,
+.pollTable td {
+    border: 1px solid white;
+    margin-left: 40px;
+}
+
+.pollTable2,
+.pollTable2 td {
+    border: 1px solid white;
+}
+
+.frame {
+    width: 900px;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+.footer {
+    border: 1px solid gray;
+    background-color: skyblue;
+    padding: 10px;
+}
+
+.top {
+    border: 1px solid black;
+    background-color: #eee;
+    padding: 10px;
+}
+
+input[type="text"] {
+    border-width: 1px;
+    border-color: gray;
+    border-style: none none solid none;
+}
+
+select {
+    padding: 5px 15px 5px 15px;
+}
