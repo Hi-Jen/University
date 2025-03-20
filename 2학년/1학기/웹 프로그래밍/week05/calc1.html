@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Bin</title>
+    <style>
+        @media (max-width:540px){
+            div.empty {display:none;}
+            div.vertical {display:block;}
+            div.horizontal {display:none;}
+        }
+        @media (max-width:360px){
+            div.empty {display:block;}
+            div.vertical {display:none;}
+            div.horizontal {display:none;}
+        }
+        @media (min-width:541px){
+            div.empty {display:none;}
+            div.vertical {display:none;}
+            div.horizontal {display:block;}
+        }
+        div { 
+            width: max-content;
+            background-color: #e6e4e4;
+            border: 1px solid #d0cccc;
+            padding: 20px;
+            padding-bottom: 10px;
+            margin: 20px;
+            border-radius: 1%;
+        }
+       #display1 {
+            border: 2px solid #bdb9b9;            
+            background-color: white;
+            font-size: 2em;
+            text-align: right;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #display2 {
+            border: 2px solid #bdb9b9;
+            background-color: white;
+            font-size: 2em;
+            text-align: right;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            height: 100%;
+        }
+
+        button {
+            background-color: white;
+            border-color: #bdb9b9;
+            text-align: center;
+            font-size: 2em;
+            width: 97%;
+            height: 97%;
+        }
+
+        .button1{
+            background-color:#dddddd;
+            font-size: 2em;
+            width: 97%;
+            height: 97%;          
+        } 
+
+        .button2 {
+            background-color:#FFCC00;
+            font-size: 2em;
+            width: 97%;
+            height: 97%;
+        } 
+    
+    </style>
+    </head>
+<body>
+<div class="empty"><p>표시할수 없음.</p></div>
+    <div class="vertical">
+        <table width=360 height=660 >
+            <tr>
+                <td colspan="4"><input id="display1"></input></td>
+            </tr>
+        </table>
+        <table width=360 height=660 >
+            <tr>
+                <td><button class="button1" onclick="MCButton();">mc</button></td>
+                <td><button class="button1" onclick="MPlusButton();">m+</button></td>
+                <td><button class="button1" onclick="MMinusButton();">m-</button></td>
+                <td><button class="button1" onclick="MRButton();">mr</button></td>
+            </tr>
+            <tr>
+                <td><button class="button1" onclick="CEButton();">CE</button></td>
+                <td><button class="button1" onclick="sqrtButton();">√x</button></td>
+                <td><button class="button1" onclick="percentButton();">%</button></td>
+                <td><button class= "button2" onclick="divButton();">÷</button></td>
+            </tr>
+            <tr>
+                <td><button class="button" onclick="numberButton(7);">7</button></td>
+                <td><button class="button" onclick="numberButton(8);">8</button></td>
+                <td><button class="button" onclick="numberButton(9);">9</button></td>
+                <td><button class="button2" onclick="xButton();">x</button></td>
+            </tr>
+            <tr>
+                <td><button class="button" onclick="numberButton(4);">4</button></td>
+                <td><button class="button" onclick="numberButton(5);">5</button></td>
+                <td><button class="button" onclick="numberButton(6);">6</button></td>
+                <td><button class="button2" onclick="minusButton();">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="button" onclick="numberButton(1);">1</button></td>
+                <td><button class="button" onclick="numberButton(2);">2</button></td>
+                <td><button class="button" onclick="numberButton(3);">3</button></td>
+                <td><button class="button2" onclick="plusButton();">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="button" onclick="numberButton(0);">0</button></td>
+                <td><button class="button" onclick="periodButton();">.</button></td>
+                <td><button class="button" onclick="changeSign();">+/-</button></td>
+                <td><button class="button2" onclick="equalButton();">=</button></td>
+            </tr>
+            <tr>
+                <td><button class="button1" onclick="piButton();">π</button></td>
+                <td><button class="button1" onclick="xxButton();">x<sup>2</button></td>
+                <td><button class= "button1" onclick="RtwoButton();">R2</button></td>
+                <td><button class= "button1" onclick="RzeroButton();">R0</button></td>
+            </tr>
+    </table>
+        <p style="text-align: right; font-size: 1em; margin: 5px; ">
+            20213032 권영훈
+        </p>
+        <p style="text-align: right; font-size: 1em; text-decoration: line-through; margin: 2px; text-decoration-color: powderblue;">
+            20213032hun@gmail.com
+    </div>
+        <div class="horizontal">
+            <table width=540 height=480 >
+                    <tr>
+                        <td colspan="7"><input id="display2"></input></td>
+                    </tr>
+                <tr>
+                    <td><button class="button1" onclick="MCButton();">mc</button></td>
+                    <td><button class="button1" onclick="MPlusButton();">m+</button></td>
+                    <td><button class= "button" onclick="numberButton(7);">7</button></td>
+                    <td><button class= "button" onclick="numberButton(8);">8</button></td>
+                    <td><button class= "button" onclick="numberButton(9);">9</button></td>
+                    <td><button class= "button2" onclick="divButton();">÷</button></td>
+                    <td><button class= "button1" onclick="RtwoButton();">R2</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button1" onclick="MMinusButton();">m-</button></td>
+                    <td><button class="button1" onclick="MRButton();">mr</button></td>
+                    <td><button class= "button" onclick="numberButton(4);">4</button></td>
+                    <td><button class= "button" onclick="numberButton(5);">5</button></td>
+                    <td><button class= "button" onclick="numberButton(6);">6</button></td>
+                    <td><button class="button2" onclick="xButton();">x</button></td>
+                    <td><button class="button1" onclick="RzeroButton();">R0</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button1" onclick="piButton();">π</button></td>
+                    <td><button class="button1" onclick="xxButton();">x<sup>2</button></td>
+                    <td><button class= "button" onclick="numberButton(1);">1</button></td>
+                    <td><button class= "button" onclick="numberButton(2);">2</button></td>
+                    <td><button class= "button" onclick="numberButton(3);">3</button></td>
+                    <td><button class="button2" onclick="minusButton();">-</button></td>
+                    <td><button class="button1" onclick="CEButton();">CE</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button1" onclick="sqrtButton();">√x</button></td>
+                    <td><button class="button1" onclick="percentButton();">%</button></td>
+                    <td><button class="button" onclick="numberButton(0);">0</button></td>
+                    <td><button class="button" onclick="periodButton();">.</button></td>
+                    <td><button class="button" onclick="changeSign();">+/-</button></td>
+                    <td><button class="button2" onclick="plusButton();">+</button></td>
+                    <td><button class="button2" onclick="equalButton();">=</button></td>
+                </tr>
+            </table>
+            <p style="text-align: right; font-size: 1em; margin: 5px; ">
+                20213032 권영훈
+            </p>
+            <p style="text-align: right; font-size: 1em; text-decoration: line-through; margin: 2px; text-decoration-color: powderblue;">
+                20213032hun@gmail.com
+            </p>
+        </div>
+        <script>
+        let memoryValue = 0;
+        let integerInput = true;
+   
+        function numberButton(num) {
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+            if (num === '.' && display1.value.slice(-1) === '.') {
+                display1.value = display1.value.slice(0, -1);
+            } else {
+                display1.value += num;
+            }
+
+            if (num === '.' && display2.value.slice(-1) === '.') {
+                display2.value = display2.value.slice(0, -1);
+            } else {
+                display2.value += num;
+            }
+        }
+
+        function plusButton() {
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+            if (!isNaN(display1.value.slice(-1))) {
+                display1.value += '+';
+            }
+
+            if (!isNaN(display2.value.slice(-1))) {
+                display2.value += '+';
+            }
+        }
+
+        function minusButton() {
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+            if (!isNaN(display1.value.slice(-1))) {
+                display1.value += '-';
+            }
+
+            if (!isNaN(display2.value.slice(-1))) {
+                display2.value += '-';
+            }
+        }
+
+        function divButton() {
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+            if (!isNaN(display1.value.slice(-1))) {
+                display1.value += '/';
+            }
+
+            if (!isNaN(display2.value.slice(-1))) {
+                display2.value += '/';
+            }
+        }
+
+        function xButton() {
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+            if (!isNaN(display1.value.slice(-1))) {
+                display1.value += '*';
+            }
+
+            if (!isNaN(display2.value.slice(-1))) {
+                display2.value += '*';
+            }
+        }
+
+        function periodButton() {
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+        
+            if (display1.value.slice(-1) === '.') {
+                return;
+            }
+
+
+            if (display2.value.slice(-1) === '.') {
+                return;
+            }
+
+            display1.value += '.';
+            display2.value += '.';
+        } 
+            
+        function CEButton(){
+            memoryValue = 0;
+
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+                display1.value = '';
+                display2.value = '';
+        }
+
+        function equalButton(){
+
+            let display1 = document.getElementById("display1");
+                const result1 = eval(display1.value);
+                display1.value = result1;
+
+            let display2 = document.getElementById("display2");
+                const result2 = eval(display2.value);
+                display2.value = result2;
+            }
+
+        function MCButton(){
+            memoryValue = 0;
+
+            var display1Value = document.getElementById("display1").value;
+            var display2Value = document.getElementById("display2").value;
+            
+                document.getElementById("display1").value = display1Value;
+                document.getElementById("display2").value = display2Value;
+            }
+                        
+        function MPlusButton(){
+
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+            if (!isNaN(parseFloat(display1.value))) {
+                    memoryValue += parseFloat(display1.value);
+                }
+            if (!isNaN(parseFloat(display2.value))) {
+                    memoryValue += parseFloat(display2.value);
+                }
+
+                display1.value = '';
+                display2.value = '';
+            }
+
+        function MMinusButton(){
+
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+            if (!isNaN(parseFloat(display1.value))) {
+                    memoryValue -= parseFloat(display1.value);
+                }
+            if (!isNaN(parseFloat(display2.value))) {
+                    memoryValue -= parseFloat(display2.value);
+                }
+            }
+            
+        function MRButton(){
+
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+                display1.value = memoryValue/2;
+                display2.value = memoryValue/2;
+            }
+
+        function piButton(){
+
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+                display1.value += Math.PI;
+                display2.value += Math.PI;
+            }
+
+        function xxButton() {
+
+            var display1 = document.getElementById("display1");
+            var display2 = document.getElementById("display2");
+
+            var inputValue1 = parseFloat(display1.value);
+            var inputValue2 = parseFloat(display2.value);
+
+                if (!isNaN(inputValue1)) {
+                    display1.value = Math.pow(inputValue1, 2);
+                }
+                if (!isNaN(inputValue2)) {
+                    display2.value = Math.pow(inputValue2, 2);
+                }
+                
+            }
+            
+        function RtwoButton() {
+            var display1 = document.getElementById("display1");
+            var display2 = document.getElementById("display2");
+
+            var inputValue1 = parseFloat(display1.value);
+            var inputValue2 = parseFloat(display2.value);
+
+                if (!isNaN(inputValue1)) {
+                    display1.value = (Math.round(inputValue1 * 100) / 100).toFixed(2);
+                }
+                if (!isNaN(inputValue2)) {
+                    display2.value = (Math.round(inputValue2 * 100) / 100).toFixed(2);
+                }
+            }
+
+        function sqrtButton(){ 
+
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+            let inputValue1 = parseFloat(display1.value);
+            let inputValue2 = parseFloat(display2.value);
+                if (!isNaN(inputValue1)) {
+                    display1.value = Math.sqrt(inputValue1);
+                }
+                if (!isNaN(inputValue2)) {
+                    display2.value = Math.sqrt(inputValue2);
+                }
+            }
+
+        function percentButton(){
+
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+            let inputValue1 = parseFloat(display1.value);
+            let inputValue2 = parseFloat(display2.value);
+
+                if (!isNaN(inputValue1)) {
+                    display1.value = inputValue1 / 10;
+                }
+                if (!isNaN(inputValue2)) {
+                    display2.value = inputValue2 / 10;
+                }
+            }
+
+        function RzeroButton() {
+
+            var display1 = document.getElementById("display1");
+            var display2 = document.getElementById("display2");
+
+            var inputValue1 = parseFloat(display1.value);
+            var inputValue2 = parseFloat(display2.value);
+
+                if (!isNaN(inputValue1)) {
+                    display1.value = Math.round(inputValue1);
+                }
+                if (!isNaN(inputValue2)) {
+                    display2.value = Math.round(inputValue2);
+                }
+            }
+
+        function changeSign(){
+
+            let display1 = document.getElementById("display1");
+            let display2 = document.getElementById("display2");
+
+                if (display1.value !== "") {
+                    if (display1.value.charAt(0) === "-") {
+                        display1.value = display1.value.slice(1);
+                    } 
+                    else {
+                        display1.value = "-" + display1.value;
+                    }
+                }
+
+                if (display2.value !== "") {
+                    if (display2.value.charAt(0) === "-") {
+                        display2.value = display2.value.slice(1);
+                    } 
+                    else {
+                        display2.value = "-" + display2.value;
+                    }
+                }
+            }
+
+        </script>
+</body>
+</html>

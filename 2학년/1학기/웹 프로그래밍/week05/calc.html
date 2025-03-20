@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Bin</title>
+    <style>
+            @media (max-width:540px){
+                div.empty {display:none;}
+                div.vertical {display:block;}
+                div.horizontal {display:none;}
+            }
+            @media (max-width:360px){
+                div.empty {display:block;}
+                div.vertical {display:none;}
+                div.horizontal {display:none;}
+            }
+            @media (min-width:541px){
+                div.empty {display:none;}
+                div.vertical {display:none;}
+                div.horizontal {display:block;}
+            }
+            div { 
+                width: max-content;
+                background-color: #e6e4e4;
+                border: 1px solid #d0cccc;
+                padding: 20px;
+                padding-bottom: 10px;
+                margin: 20px;
+                border-radius: 1%;
+            }
+           #display {
+            border: 2px solid #bdb9b9;
+            background-color: white;
+            font-size: 2em;
+            text-align: right;
+            display: block;
+            width: 100%;
+            height: 100%;
+            
+            }
+           table {
+            border-collapse: collapse;
+            height: 100%;
+           }
+
+           button {
+            background-color: white;
+            border-color: #bdb9b9;
+            text-align: center;
+            font-size: 2em;
+            width: 97%;
+            height: 97%;
+            
+            }
+
+           .button1{
+            background-color:#dddddd;
+            font-size: 2em;
+            width: 97%;
+            height: 97%;          
+            } 
+
+            .button2 {
+            background-color:#FFCC00;
+            font-size: 2em;
+            width: 97%;
+            height: 97%;
+            } 
+
+            </style>
+        </head>
+    <body>
+        <div class="empty"><p>표시할수 없음.</p></div>
+        <div class="vertical">
+            <table width=360 height=660 >
+                <tr>
+                    <td colspan="4"><span id="display">30</span></td>
+                </tr>
+            </table>
+            <table width=360 height=660 >
+                <tr>
+                    <td><button class="button button1">mc</button></td>
+                    <td><button class="button button1">m+</button></td>
+                    <td><button class="button button1">m-</button></td>
+                    <td><button class="button button1">mr</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button button1">CE</button></td>
+                    <td><button class="button button1">√x</button></td>
+                    <td><button class="button button1">%</button></td>
+                    <td><button class="button button2">÷</button></td>
+                </tr>
+                <tr>
+                    <td><button>7</button></td>
+                    <td><button>8</button></td>
+                    <td><button>9</button></td>
+                    <td><button class="button button2">x</button></td>
+                </tr>
+                <tr>
+                    <td><button>4</button></td>
+                    <td><button>5</button></td>
+                    <td><button>6</button></td>
+                    <td><button class="button button2">-</button></td>
+                </tr>
+                <tr>
+                    <td><button>1</button></td>
+                    <td><button>2</button></td>
+                    <td><button>3</button></td>
+                    <td><button class="button button2">+</button></td>
+                </tr>
+                <tr>
+                    <td><button>0</button></td>
+                    <td><button>.</button></td>
+                    <td><button>+/-</button></td>
+                    <td><button class="button button2">=</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button button1">π</button></td>
+                    <td><button class="button button1">x<sup>2</button></td>
+                    <td><button class="button button1">R2</button></td>
+                    <td><button class="button button1">R0</button></td>
+                </tr>
+            </table>
+            <p style="text-align: right; font-size: 1em; margin: 5px; ">
+                20213032 권영훈
+            </p>
+            <p style="text-align: right; font-size: 1em; text-decoration: line-through; margin: 2px; text-decoration-color: powderblue;">
+                20213032hun@gmail.com
+        </div>
+        <div class="horizontal">
+            <table width=540 height=480 >
+                        <tr>
+                            <td colspan="7"><span id="display">30</span></td>
+                        </tr>
+                <tr>
+                    <td><button class="button button1">mc</button></td>
+                    <td><button class="button button1">m+</button></td>
+                    <td><button>7</button></td>
+                    <td><button>8</button></td>
+                    <td><button>9</button></td>
+                    <td><button class="button button2">÷</button></td>
+                    <td><button class="button button1">R2</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button button1">M-</button></td>
+                    <td><button class="button button1">mr</button></td>
+                    <td><button>4</button></td>
+                    <td><button>5</button></td>
+                    <td><button>6</button></td>
+                    <td><button class="button button2">x</button></td>
+                    <td><button class="button button1">R0</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button button1">π</button></td>
+                    <td><button class="button button1">x<sup>2</button></td>
+                    <td><button>1</button></td>
+                    <td><button>2</button></td>
+                    <td><button>3</button></td>
+                    <td><button class="button button2">-</button></td>
+                    <td><button class="button button1">CE</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button button1">√x</button></td>
+                    <td><button class="button button1">%</button></td>
+                    <td><button>0</button></td>
+                    <td><button>.</button></td>
+                    <td><button>+/-</button></td>
+                    <td><button class="button button2">+</button></td>
+                    <td><button class="button button2">=</button></td>
+                </tr>
+            </table>
+            <p style="text-align: right; font-size: 1em; margin: 5px; ">
+                20213032 권영훈
+            </p>
+            <p style="text-align: right; font-size: 1em; text-decoration: line-through; margin: 2px; text-decoration-color: powderblue;">
+                20213032hun@gmail.com
+            </p>
+        </div>
+        <script> </script>
+    </body>
+
+</html>
