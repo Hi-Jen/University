@@ -1,0 +1,66 @@
+.board {
+    position: relative;
+    border: 2px outset;
+    padding: 5px;
+    width: 724px;
+}
+.control {
+    border: 2px inset;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.field {
+    line-height: 12px;
+    border: 2px inset;
+}
+#reset {
+    border: 2px outset;
+    cursor: pointer;
+    height: 42px;
+    width: 42px;
+}
+.cellClosed {
+    position: relative;
+    display: inline-block;
+    background-color: lightgray;
+    width: 16px;
+    height: 16px;
+    margin: 0px 0px;
+    border:4px outset;
+}
+.cellOpen {
+    position: relative;
+    display: inline-block;
+    background-color: lightgray;
+    width: 22px;
+    height: 22px;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    border:1px solid silver;
+    text-align: center;
+}
+span.count {
+    position: absolute;
+    top: 4px;
+    left: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: default;
+}
+span.cnt0 { color: #000000; }
+span.cnt1 { color: #007b00; }
+span.cnt2 { color: #ff0000; }
+span.cnt3 { color: #00007b; }
+span.cnt4 { color: #7b0000; }
+span.cnt5 { color: #00007b; }
+span.cnt6 { color: #007b7b; }
+span.cnt7 { color: #ffffff; }
+span.bomb {
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: default;
+}
+
