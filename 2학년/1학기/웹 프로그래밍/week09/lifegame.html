@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <style>
+        .cell {
+            display: inline-block;
+            border: 1px solid white;
+            background-color: lightgray;
+            width: 10px;
+            height: 10px;
+            margin: 0px 0px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="clearWorld();">clear</button>
+    <button onclick="clearInterval(myInterval)">stop</button>
+    <button onclick="NextGeneration();">next</button>
+    <button onclick="myInterval = setInterval(NextGeneration, 300);">start</button>
+    <hr />
+
+    <div style='line-height:10px;'>
+        <script>
+            const size = 20;
+            const arraySize = size * size;
+            const neighbor = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
+            var curr = Array(arraySize);
+            curr.fill(0);
+            var next = Array(arraySize);
+
+            for (i = 0; i < size; i++) {
+                for (j = 0; j < size; j++) {
+                    id = i * size + j;
+                    document.write(`<div class='cell' id='${id}' onclick='Toggle(this, ${id});'></div>`);
+                }
+                document.write("<br/>");
+            }
+
+            function Toggle(element, id) {
+                if (element.style.backgroundColor == 'gray') {
+                    element.style.backgroundColor = 'lightgray';
+                    curr[parseInt(id)] = 0;
+                }
+                else {
+                    element.style.backgroundColor = 'gray';
+                    curr[parseInt(id)] = 1;
+                }
+            }
+
+            function nextState(id) {
+                const i = parseInt(id / size);
+                const j = id % size;
+                let count = 0;
+                for (let k = 0; k < 8; k++) {
+                    const ii = i + neighbor[k][0];
+                    const jj = j + neighbor[k][1];
+                    if (ii < 0 || ii >= size) continue;
+                    if (jj < 0 || jj >= size) continue;
+                    if (curr[ii * size + jj] == 1) count++;
+                }
+                if (curr[i * size + j] == 1 && (count == 2 || count == 3)) return 1;
+                if (curr[i * size + j] == 0 && count == 3) return 1;
+                return 0;
+            }
+
+            function NextGeneration() {
+                console.log(curr);
+                for (let id = 0; id < arraySize; id++) next[id] = nextState(id);
+                for (let id = 0; id < arraySize; id++) curr[id] = next[id];
+                drawWorld();
+            }
+
+            function drawWorld() {
+                for (let id = 0; id < arraySize; id++) {
+                    element = document.getElementById(String(id));
+                    if (curr[id]) element.style.backgroundColor = "gray";
+                    else element.style.backgroundColor = "lightgray";
+                }
+            }
+
+            function clearWorld() {
+                curr.fill(0);
+                drawWorld();
+            }
+        </script>
+    </div>
+</body>
+</html>
