@@ -1,0 +1,66 @@
+#include <iostream>
+
+class Gate {
+protected:
+    bool x, y, z;
+public:
+    Gate() : x(false), y(false), z(false) {}
+    void inputSet(bool xx, bool yy) {
+        x = xx;
+        y = yy;
+    }
+    virtual void op() = 0; // 순수 가상 함수로 정의하여 각 자식 클래스에서 구현하도록 합니다.
+};
+
+class ANDGate : public Gate {
+public:
+    void op() override {
+        z = x && y;
+        std::cout << "AND input: " << x << " " << y << " -> " << z << std::endl;
+    }
+};
+
+class ORGate : public Gate {
+public:
+    void op() override {
+        z = x || y;
+        std::cout << "OR input: " << x << " " << y << " -> " << z << std::endl;
+    }
+};
+
+class XORGate : public Gate {
+public:
+    void op() override {
+        z = x ^ y;
+        std::cout << "XOR input: " << x << " " << y << " -> " << z << std::endl;
+    }
+};
+
+void p8_1() {
+    ANDGate gate_and;
+    ORGate gate_or;
+    XORGate gate_xor;
+    
+    gate_and.inputSet(true, false);
+    gate_and.op();
+    
+    gate_and.inputSet(true, true);
+    gate_and.op();
+    
+    gate_or.inputSet(true, false);
+    gate_or.op();
+    
+    gate_or.inputSet(true, true);
+    gate_or.op();
+    
+    gate_xor.inputSet(true, false);
+    gate_xor.op();
+    
+    gate_xor.inputSet(true, true);
+    gate_xor.op();
+}
+
+int main() {
+    p8_1();
+    return 0;
+}

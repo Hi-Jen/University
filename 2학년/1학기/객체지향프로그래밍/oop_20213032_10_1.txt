@@ -1,0 +1,54 @@
+#include <iostream>
+
+class Vector {
+private:
+    int x, y;
+
+public:
+    // 생성자
+    Vector(int x = 0, int y = 0) : x(x), y(y) {}
+
+    // 덧셈 연산자
+    Vector operator+(const Vector& other) const {
+        return Vector(x + other.x, y + other.y);
+    }
+
+    // 뺄셈 연산자
+    Vector operator-(const Vector& other) const {
+        return Vector(x - other.x, y - other.y);
+    }
+
+    // 복합 할당 연산자 +=
+    Vector& operator+=(const Vector& other) {
+        x += other.x;
+        y += other.y;
+        return *this;
+    }
+
+    // 복합 할당 연산자 -=
+    Vector& operator-=(const Vector& other) {
+        x -= other.x;
+        y -= other.y;
+        return *this;
+    }
+
+    // 출력 연산자
+    friend std::ostream& operator<<(std::ostream& os, const Vector& v) {
+        os << "(" << v.x << ", " << v.y << ")";
+        return os;
+    }
+};
+
+int main() {
+    Vector a(1, 2), b(2, 3), c;
+    c = a - b; // c = a - b; 에서 a 값 변화 없음
+    std::cout << a << " , " << b << " , " << c << std::endl;
+    
+    a += b; // a = a + b 수행, a를 반환
+    std::cout << a << " , " << b << " , " << c << std::endl;
+    
+    a -= c; // a = a - c 수행, a를 반환
+    std::cout << a << " , " << b << " , " << c << std::endl;
+    
+    return 0;
+}
