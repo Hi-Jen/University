@@ -1,0 +1,61 @@
+<html>
+    <body>
+        <meta charset="utf-8">
+        <link rel="StyleSheet" href="./table.css" type="text/css"/>
+        
+        <div class="footer" style="text-align: center;" >
+            <br/><br/>20213032 권영훈<br/><br/><br/>
+        </div>
+
+        <div class=box>
+            <b>[단계 2] makeTable02.php (POST) 테스트 용</b><br/><br/>
+            <form method="POST" action="./makeTable2.php">
+                타입(A: 월~금, B:월~토): <input type="text" name="type"><br/>
+                시작시간: <input type="text" name="start"><br/>
+                종료시간: <input type="text" name="end"><br/>
+                <input type="submit">
+            </form>
+        </div><br/>
+
+        <div class=box>
+            <b>[단계 3] makeTable03.php (POST) 테스트 용</b><br/><br/>
+            <form method="GET" action="./makeTable3.php">
+                타입(A: 월~금, B:월~토): <input type="text" name="type"><br/>
+                시작시간: <input type="text" name="start"><br/>
+                종료시간: <input type="text" name="end"><br/>
+                <input type="submit">
+            </form>
+            <a href="./makeTable3.php?type=A&start=9&end=17" target=_blank>A형 09:00~17:00</a>
+            <a href="./makeTable3.php?type=A&start=9&end=13" target=_blank>A형 08:00~13:00</a>
+            <a href="./makeTable3.php?type=B&start=9&end=17" target=_blank>B형 09:00~17:00</a>
+        </div><br/>
+
+        <div class=box>
+            <b>[단계 4] makeTable04.php (GET + 함수) 테스트 용</b><br/><br/>
+            <form method="GET" action="./makeTable4.php">
+                타입(A: 월~금, B:월~토): <input type="text" name="type"><br/>
+                시작시간: <input type="text" name="start"><br/>
+                종료시간: <input type="text" name="end"><br/>
+                <input type="submit">
+            </form>
+            <a href="./makeTable4.php?type=A&start=9&end=17" target=_blank>A형 09:00~17:00</a>
+            <a href="./makeTable4.php?type=A&start=9&end=13" target=_blank>A형 08:00~13:00</a>
+            <a href="./makeTable4.php?type=B&start=9&end=17" target=_blank>B형 09:00~17:00</a>
+        </div><br/>
+
+        <div class=box>
+            <b>[단계 5] makeTable05.php (GET + C type 추가) 테스트 용</b><br/><br/>
+            <form method="GET" action="./makeTable5.php">
+                타입(A: 월~금, B:월~토, C:일~토): <input type="text" name="type"><br/>
+                시작시간: <input type="text" name="start"><br/>
+                종료시간: <input type="text" name="end"><br/>
+                <input type="submit">
+            </form>
+            <a href="./makeTable5.php?type=A&start=9&end=17" target=_blank>A형 09:00~17:00</a>
+            <a href="./makeTable5.php?type=A&start=9&end=13" target=_blank>A형 08:00~13:00</a>
+            <a href="./makeTable5.php?type=C&start=9&end=17" target=_blank>C형 09:00~17:00</a>
+        </div><br/>
+    </body>
+</html>
+
+
