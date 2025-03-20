@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>-진수 변환기-</h1>
+        <section>
+            <h2>10진수 입력 </h2>
+            <h4>※ 음수를 입력할 수도 있음.</h4>
+            <h4>입력1: <input type="number" id="input1"></h4>
+            <h4>입력2: <input type="number" id="input2"></h4>
+            <button onclick="convertToBinary()">변환1</button>
+        </section>
+
+        <section id="conversionProcess">
+            <h3>변환 과정</h3>
+            <div id="conversionText"></div>
+        </section>
+
+        <section>
+            <h3>2진수 (부호 양 표현)로 변환된 값</h3>
+            <h4>입력3: <span id="binaryInput1"></span></h4>
+            <h4>입력4: <span id="binaryInput2"></span></h4>
+            <button onclick="addBinary()">더하기</button>
+        </section>
+
+        <section id="binaryAddition">
+            <h4>캐리:</h4>
+            <div id="carryBorrow"></div>
+            <h4>결과: <span id="binaryResult"></span></h4>
+            <span id="binaryResultString" style="display:none;"></span>
+        </section>
+
+        <section>
+            <h3>10진수로 표현된 계산결과</h3>
+            <button onclick="convertToDecimal()">변환2</button>
+            <h4>출력: <span id="decimalResult"></span></h4>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
