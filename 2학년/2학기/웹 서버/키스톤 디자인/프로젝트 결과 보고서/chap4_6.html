@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문조사 결과 데이터 암호화 기능</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box {
+            max-width: 900px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        ul {
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>■ 설문조사 결과 데이터 암호화 기능</h2>
+        <h3>■ 설문조사 결과 데이터를 암호화하여 사용자 익명성을 유지하고 데이터 보호를 강화하는 기능입니다.</h3>
+        <a href="https://imgur.com/qvUJfNZ">
+            <img src="https://i.imgur.com/qvUJfNZ.png" title="설문 데이터 암호화" width="800" />
+        </a>
+        <ul type="circle">
+            <li>설문자의 설문 데이터를 <strong>암호화</strong>하여 사용자의 <strong>익명성</strong>을 보장합니다.</li>
+            <li>암호화된 설문 데이터는 결과 페이지에 <strong>합산</strong>하여 표시됩니다.</li>
+            <li>설문 참여 여부는 데이터베이스에 저장되며, 사용자가 설문에 <strong>참여</strong>하였는지 <strong>확인</strong>할 수 있습니다.</li>
+            <li>설문 데이터는 암호화되어 저장되며 익명 설문 데이터의 결과만 도출하여 설문 결과를 결과 페이지에 표시합니다.</li>
+        </ul>
+
+        <li type="square"><strong>익명성을 보장하면서 설문 결과를 암호화하여 저장하는 방법:</strong></li>
+        <ul type="circle">
+            <p><strong>1. </strong> 설문 데이터 암호화에 사용할 대칭 키를 안전한 방법으로 <strong>생성</strong>하고 <strong>관리</strong>합니다.</p>
+            <p><strong>2. </strong> 설문 데이터를 <strong>AES-256-CBC 방식</strong>으로 <strong>암호화</strong>합니다.</p>
+            <p><strong>3. </strong> 암호화된 데이터를 데이터베이스에 <strong>저장</strong>할 때 <strong>초기화 벡터(IV)</strong>도 함께 저장합니다.</p>
+            <p><strong>4. </strong> 설문 참여 여부를 확인하기 위한 참여자 기록을 별도로 관리하며, 원본 데이터와 분리합니다.</p>
+            <p><strong>5. </strong> 결과 페이지에서는 암호화된 데이터를 <strong>복호화</strong>하지 않고 <strong>합산</strong> 또는 <strong>통계
+                    처리</strong>를 통해 익명성을 유지합니다.</p>
+        </ul>
+        <p align="center"><strong>- 데이터 암호화에 대한 설명은 Chat GPT의 도움을 받음 -</strong></p>
+        <li type="square"><strong>사용된 소스코드</strong></li>
+        <ul type="circle">
+            <pre><code><strong>
+                function encryptVote($vote, $key) {
+                    $cipher = "aes-256-cbc"; // AES 방식 대칭형 암호화 알고리즘
+                    $ivlen = openssl_cipher_iv_length($cipher); // AES 초기화 벡터 길이
+                    $iv = openssl_random_pseudo_bytes($ivlen); // 랜덤 IV 생성
+                    $ciphertext = openssl_encrypt($vote, $cipher, $key, 0, $iv);
+                    return base64_encode($iv . $ciphertext); // IV와 암호문 반환
+                }
+
+                function decryptVote($encryptedVote, $key) {
+                    $cipher = "aes-256-cbc";
+                    $data = base64_decode($encryptedVote);
+                    $ivlen = openssl_cipher_iv_length($cipher);
+                    $iv = substr($data, 0, $ivlen); // IV 추출
+                    $ciphertext = substr($data, $ivlen); // 암호문 추출
+                    return openssl_decrypt($ciphertext, $cipher, $key, 0, $iv); // 복호화 수행
+                }
+            </strong></code></pre>
+        </ul>
+    </div>
+</body>
+
+</html>

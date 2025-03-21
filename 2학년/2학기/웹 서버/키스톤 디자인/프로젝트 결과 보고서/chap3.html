@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            max-width: 950px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        img {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+        }
+
+        ol {
+            line-height: 1.8;
+        }
+
+        img {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>■ 화면 설계</h2>
+        <h3>■ 익명 설문 시스템</h3>
+        <h3>익명 설문 시스템 시작 페이지</h3>
+        <a href="https://imgur.com/phQ6E3M"><img src="https://i.imgur.com/phQ6E3M.png" title="익명 설문 시스템 시작 페이지"
+                width="600" /></a><br>
+        <ol>
+            <strong>
+                <li>시스템 시작 페이지에서 회원가입 버튼을 눌러 회원가입을 합니다.</li>
+            </strong><br>
+            <a href="https://imgur.com/6IJllZ5"><img src="https://i.imgur.com/6IJllZ5.png" title="익명 설문 시스템 회원가입 페이지"
+                    width="800" /></a>
+            <ul type="circle"><br>
+                <li>아이디(학번), 비밀번호, 이름을 입력받습니다.</li>
+                <li>작성 후, 회원가입 버튼을 눌러 회원가입합니다.</li>
+            </ul><br>
+            <strong>
+                <li>회원가입한 데이터는 암호화되어 데이터베이스에 저장됩니다.</li>
+            </strong><br>
+            <a href="https://imgur.com/hM5pXhR"><img src="https://i.imgur.com/hM5pXhR.png" title="데이터베이스 암호화 데이터 저장"
+                    width="800" /></a>
+            <ul type="circle"><br>
+                <li>비밀번호를 암호화하여 익명성을 보장합니다.</li>
+            </ul><br>
+            <strong>
+                <li>이미 동일한 아이디(학번)로 회원가입된 경우, 오류 메시지를 출력합니다.</li>
+            </strong><br>
+            <ul type="circle">
+                <a href="https://imgur.com/2BM7LCV"><img src="https://i.imgur.com/2BM7LCV.png"
+                        title="동일 회원가입 데이터 오류 메시지 출력" width="400" /></a>
+            </ul><br>
+            <ul type="circle">
+                <li>자신의 아이디(학번)이 이미 회원가입되어있는지 확인할 수 있습니다.</li>
+            </ul><br>
+            <strong>
+                <li>저장된 데이터를 기반으로 로그인합니다.</li>
+            </strong><br>
+            <a href="https://imgur.com/1Pm99l1"><img src="https://i.imgur.com/1Pm99l1.png" title="익명 설문 시스템 로그인 페이지"
+                    width="800" /></a>
+            <ul type="circle"><br>
+                <li>아이디(학번)와 비밀번호를 입력하고 '로그인' 버튼을 클릭하여 인증 절차를 진행합니다.</li>
+            </ul><br>
+            <strong>
+                <li>비밀번호가 잘못된 경우, 오류 메시지를 출력합니다.</li>
+            </strong><br>
+            <ul type="circle">
+                <a href="https://imgur.com/pbOce0m"><img src="https://i.imgur.com/pbOce0m.png" title="비밀번호 오류"
+                        width="400" /></a>
+                <li>사용자가 입력한 비밀번호가 잘못 되었는지 확인할 수 있습니다.</li>
+            </ul><br>
+            <strong>
+                <li>로그인 후, 목록페이지에서 참여 가능한 설문이 있는지 확인합니다.</li>
+            </strong><br>
+            <a href="https://imgur.com/psbF6bb"><img src="https://i.imgur.com/psbF6bb.png" title="익명 설문 시스템 설문 목록 페이지"
+                    width="800" /></a>
+            <ul type="circle"><br>
+                <li>목록페이지의 좌측 상단에서 로그인한 사용자를 확인할 수 있습니다.</li>
+                <li>목록페이지의 우측 상단에서 로그아웃 버튼을 눌러 로그아웃할 수 있습니다.</li>
+                <li>사용자는 제목칸의 하이퍼링크 텍스트를 눌러 설문에 참여할 수 있습니다.</li>
+                <li>이때, 로그인한 사용자가 작성한 설문은 삭제 버튼을 통해 삭제할 수 있습니다.</li>
+                <li>작성한 설문 삭제는 해당 설문 작성자만 가능합니다.</li>
+            </ul><br>
+            <strong>
+                <li>사용자가 설문에 참여할 수 있습니다.</li>
+            </strong><br>
+            <a href="https://imgur.com/wz51WT6"><img src="https://i.imgur.com/wz51WT6.png" title="설문 참여 페이지"
+                    width="800" /></a>
+            <ul type="circle"><br>
+                <li>사용자는 설문에 응시한 후 찬성, 중립, 반대의 의견 중 하나를 선택한 후 제출버튼을 누릅니다.</li>
+                <li>설문조사 제출 시 설문자의 설문조사 결과 데이터는 암호화되어 데이터베이스에 저장됩니다.</li>
+            </ul><br>
+            <strong>
+                <li>참여한 설문 결과는 암호화되어 저장됩니다.</li>
+            </strong><br>
+            <a href="https://imgur.com/qvUJfNZ"><img src="https://i.imgur.com/qvUJfNZ.png" title="설문 데이터 암호화"
+                    width="800" /></a>
+            <ul type="circle">
+                <li>설문 참여 시 설문자의 설문 참여 사실은 데이터 베이스에 저장되어 설문자가 설문에 참여했다는 사실은 알 수 있습니다.</li>
+                <li>설문 데이터는 암호화되어 저장되며 설문 데이터의 결과만 도출하여 결과 페이지에 표시합니다.</li>
+            </ul><br>
+            <strong>
+                <li>참여 가능한 설문이 없으면 새로운 설문을 만듭니다.</li>
+            </strong><br>
+            <a href="https://imgur.com/eXHWu2a"><img src="https://i.imgur.com/eXHWu2a.png" title="설문자 설문 생성 페이지"
+                    width="800" /></a>
+            <ul type="circle"><br>
+                <li>목록페이지에서 설문조사 작성버튼을 통해 설문 작성페이지로 이동합니다.</li>
+                <li>설문을 작성할 때, 사용자는 설문 제목, 질문(내용) 등을 입력합니다.</li>
+                <li>설문 선택지는 기본적으로 찬성, 중립, 반대의 3가지로 구성됩니다.</li>
+                <li>설문을 작성한 후 게시글 추가버튼을 통해 설문을 추가할 수 있습니다.</li>
+            </ul><br>
+            <strong>
+                <li>설문 종료 후 참여한 설문 페이지를 눌러 설문 결과페이지로 이동합니다.</li>
+            </strong><br>
+            <a href="https://imgur.com/AxrVULl"><img src="https://i.imgur.com/AxrVULl.png" title="결과 확인"
+                    width="800" /></a>
+            <ul type="circle">
+                <li>설문 목록페이지에서 참여한 설문의 하이퍼링크를 누릅니다.</li>
+                <li>참여한 설문은 설문 대신 '이미 투표하셨습니다.' 라는 문구를 확인할 수 있습니다.</li>
+                <li>설문 페이지로 들어가 결과보기 버튼을 통해 설문 결과를 확인할 수 있습니다.</li>
+            </ul><br>
+            <strong>
+                <li>설문 마감 후, 결과 페이지가 표시됩니다.</li>
+            </strong><br>
+
+            <a href="https://imgur.com/MWU3TH6"><img src="https://i.imgur.com/MWU3TH6.png" title="설문 결과 페이지"
+                    width="800" /></a>
+            <a href="https://imgur.com/Pze5Opn"><img src="https://i.imgur.com/Pze5Opn.png" title="설문 결과 목록, 게시글"
+                    width="800" /></a>
+            <ul type="circle">
+                <li>암호화된 설문 데이터의 결과를 합산하여 결과 페이지에 도출합니다.</li>
+                <li>설문 결과는 퍼센테이지 방식과 그래프 형식으로 표시됩니다.</li>
+                <li>결과 페이지에서 스크롤을 내려 목록으로 돌아가기, 홈으로 돌아가기 버튼을 클릭하면 해당 페이지로 돌아갑니다.</li>
+            </ul>
+        </ol>
+    </div>
+</body>
+
+</html>

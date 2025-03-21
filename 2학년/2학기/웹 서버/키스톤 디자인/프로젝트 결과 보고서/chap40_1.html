@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<h2>■ 회원가입, 비밀번호 암호화 기능</h2>
+<a href="https://imgur.com/R3H60Qa"><img src="https://i.imgur.com/R3H60Qa.png" title="source: imgur.com"
+        width="300" /></a>
+<li>회원가입 기능을 제공합니다.</li>
+<ul type="circle">
+    <li>학번(아이디), 이름, 비밀번호 데이터를 데이터 베이스에 저장합니다.</li>
+</ul>
+<li>비밀번호 암호화 기능을 제공합니다.</li>
+<ul type="circle">
+    <li>비밀번호는 암호화되어 데이터 베이스에 저장됩니다.</li>
+</ul>
+<li>- 비밀번호 암호화 방법 -</li>
+<ul type="circle">
+    <li>1. MySQL 내장 함수 사용:<br>
+        - PASSWORD()나 SHA2 함수를 사용할 수 있지만, 보안 강도가 낮아 추천되지 않습니다.</li>
+    <li>2. PHP에서 bcrypt 사용:<br>
+        - password_hash()와 password_verify()를 통해 강력한 암호화와 검증이 가능합니다.</li>
+</ul>

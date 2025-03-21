@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .box {
+            max-width: 900px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        code {
+            font-family: Arial, Helvetica, sans-serif, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>■ 회원가입 및 비밀번호 암호화 기능</h2>
+        <h3>■ 회원가입 기능을 제공합니다.</h3>
+        <a href="https://imgur.com/6IJllZ5">
+            <img src="https://i.imgur.com/6IJllZ5.png" title="익명 설문 시스템 회원가입 페이지" width="700" />
+        </a>
+
+        <ul type="circle">
+            <li>사용자는 <strong>아이디(학번), 비밀번호, 이름</strong>을 입력해야 합니다.</li>
+            <li>입력된 데이터는 데이터베이스에 저장되며, 비밀번호는 <strong>암호화</strong>되어 저장됩니다.</li>
+        </ul>
+
+        <strong>
+            <li type="square">동일한 아이디(학번)로 회원가입 시, 오류 메시지가 출력되는 기능을 제공합니다.</li>
+        </strong>
+        <a href="https://imgur.com/2BM7LCV">
+            <img src="https://i.imgur.com/2BM7LCV.png" title="동일 회원가입 데이터 오류 메시지 출력" width="400" />
+        </a>
+
+        <ul type="circle">
+            <li>사용자는 자신의 아이디(학번)가 이미 <strong>등록</strong>되었는지 확인할 수 있습니다.</li>
+        </ul>
+
+        <h3>■ 비밀번호 암호화 기능을 제공합니다.</h3>
+        <a href="https://imgur.com/hM5pXhR">
+            <img src="https://i.imgur.com/hM5pXhR.png" title="데이터베이스 암호화 데이터 저장" width="800" />
+        </a>
+        <ul type="circle">
+            <li>비밀번호는 암호화되어 데이터베이스에 안전하게 저장됩니다.</li>
+            <li>암호화를 통해 익명성 및 데이터 신뢰성을 강화합니다.</li>
+        </ul>
+
+        <strong>
+            <li type="square">비밀번호 암호화 방법</li>
+        </strong>
+        <ul type="circle">
+            <li><strong>1. MySQL 내장 함수 사용:</strong><br>
+                - PASSWORD()나 SHA2 함수를 사용합니다.</li><br>
+            <li><strong>2. PHP에서 bcrypt 사용:</strong><br>
+                - password_hash()와 password_verify()를 통해 강력한 암호화와 검증이 가능합니다.</li>
+        </ul>
+
+        <strong>
+            <li type="square">PHP 코드 예시:</li>
+        </strong>
+        <ul type="circle">
+            <li>
+                <strong>1. 비밀번호 암호화 저장 코드:</strong>
+                <pre><code>
+$hashed_pass = password_hash($pass, PASSWORD_DEFAULT);
+mysqli_stmt_bind_param($stmt, "sss", $id, $hashed_pass, $name);
+// password_hash(): PHP에서 제공하는 함수로, 비밀번호를 암호화(해싱)하여 안전하게 저장할 수 있도록 합니다.
+                </code></pre>
+            </li>
+            <li>
+                <strong>2. 비밀번호 검증 코드:</strong>
+                <pre><code>
+if (password_verify($input_pass, $hashed_pass)) {
+    // 비밀번호가 일치하는 경우의 처리
+} else {
+    // 비밀번호 불일치 처리
+}
+// password_hash()와 password_verify()를 통해 강력한 암호화와 검증이 가능합니다.
+                </code></pre>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
