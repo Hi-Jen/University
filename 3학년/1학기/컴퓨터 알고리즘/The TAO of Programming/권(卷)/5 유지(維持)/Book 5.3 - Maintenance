@@ -1,0 +1,15 @@
+느날 제자 프로그래머가 간단한 재무(財務) 프로그램을 짜라는 지시를 받았다.
+
+제자는 많은 날을 열심히 일했다.
+스승이 그의 프로그램을 점검해보니 스크린 에디터와 범용(汎用) 그래픽 처리 루틴 몇 가지와 인공지능(人工知能)을 응용한 인터페이스가 구현되어 있었다.
+하지만 어디에도 재무와 관련된 기능은 없었다.
+
+스승이 이에 대해 묻자, 제자가 시큰둥하게 대답했다.
+"그렇게 급하게 재촉하지 마세요. 언젠가는 재무에 관련된 기능을 넣을테니까요."
+
+A novice programmer was once assigned to code a simple financial package.
+
+The novice worked furiously for many days, but when his master reviewed his program, he discovered that it contained a screen editor, a set of generalized graphics routines, an artificial intelligence interface, but not the slightest mention of anything financial.
+
+When the master asked about this, the novice became indignant.
+"Don't be so impatient," he said, "I'll put in the financial stuff eventually."
