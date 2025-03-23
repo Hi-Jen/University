@@ -1,0 +1,39 @@
+■ 프림의 MST(욕심쟁이 방법): 인접행렬을 기반으로 하여 복잡도는 복잡도: Θ(n^2)
+[0000]    void prim_MST_2(int graph[][MAX], int n, int s) {
+[0001]        bool MST_V[MAX] ;
+[0002]        int distance[MAX], nearest[MAX], i, u, w;
+[0003]        for (i = 0; i<n; i++)  { // 초기화 
+[0004]            MST_V[i] = false; 
+[0005]            distance[i] = graph[s][i];
+[0006]            nearest[i] = s;
+[0007]        }
+[0008]        MST_V[s] = true;
+[0009]        loop (n-2) { // n-2번 반복
+[0010]            u = select_min(distance, n, MST_V);
+[0011]            MST_V[u] = true;
+[0012]            for (w = 0; w<n; w++)
+[0013]                if (MST_V[w] == false) {
+[0014]                    if (graph[u][w]<distance[w]) {
+[0015]                        distance[w] = graph[u][w];
+[0016]                        nearest[w] = u;
+[0017]                    }
+[0018]                }
+[0019]            }
+[0020]        }
+[0021]    }
+[0022]    
+[0023]    int select_min(int distance[], int n, bool MST_V[]) {
+[0024]        int i, min = ∞, min_index = 0;
+[0025]        for (i = 0; i < n; i++) {
+[0026]            if (distance[i]<min && MST_V[i]==false) {
+[0027]                min = distance[i];
+[0028]                min_index = i;
+[0029]            }
+[0030]        }
+[0031]        return min_index;
+[0032]    }
+[0033]
+
+■ 위의 알고리즘의 시간 복잡도 분석: 정점의 수가 n 이고 간선의 수가 e
+그래프: 인접 행렬에 저장
+최소 가중치를 구하는 select_min 연산: 1차원 배열의 순차탐색으로 구현 Θ(n^2)
