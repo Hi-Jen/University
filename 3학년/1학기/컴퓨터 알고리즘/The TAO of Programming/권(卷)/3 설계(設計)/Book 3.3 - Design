@@ -1,0 +1,40 @@
+위(魏)나라의 조정(朝廷)에 한 프로그래머가 있었다.
+위후(魏候)가 프로그래머에게 묻기를 :
+"회계(會計) 프로그램과 운영체제(運營體制) 중에 설계(設計)하기 쉬운 것은 어느 쪽이요?"
+
+"운영체제이옵니다." 하고 프로그래머가 답했다.
+
+위후는 믿을 수 없다는 표정으로 반문하였다.
+"어찌 회계 프로그램처럼 하찮은 것이 운영체제의 복잡함을 능가(凌駕)한다는 말이요?"
+
+"그렇지 않사옵니다." 라고 프로그래머가 대답했다.
+"회계 프로그램을 설계할 때는 프로그래머가 서로 다른 생각을 지닌 사람들을 조율(調律)해야만 하옵니다 :
+회계 프로그램이 어떻게 작동해야 하며, 보고서(報告書)는 어떤 양식(樣式)으로 출력(出力)되어야 하며, 세법(稅法)에는 어느 정도로 충실해야 하는지 각양각색으로 떠들기 마련이옵니다.
+반면에 운영체제의 외양(外樣)에는 아무도 신경쓰지 않사옵니다.
+운영체제를 설계할 때는 프로그래머는 기계와 아이디어의 가장 단순(單純)한 조화(調和)만 추구하면 되옵나이다.
+이것이 운영체제가 설계하기 더 쉬운 까닭이옵니다."
+
+크게 감탄(感嘆)한 위후(魏候)가 미소(微笑)를 지으며 다른 질문(質問)을 던졌다.
+"그렇구려, 그런데 어느 쪽이 더 디버깅하기 쉽소?"
+
+프로그래머는 아무런 답(答)도 하지 못했다.
+
+There was once a programmer who was attached to the court of the warlord of Wu.
+The warlord asked the programmer :
+"Which is easier to design : an accounting package or an operating system?"
+
+"An operating system," replied the programmer.
+
+The warlord uttered an exclamation of disbelief.
+"Surely an accounting package is trivial next to the complexity of an operating system," he said.
+
+"Not so," said the programmer, "when designing an accounting package, the programmer operates as a mediator between people having different ideas :
+how it must operate, how its reports must appear, and how it must conform to the tax laws.
+By contrast, an operating system is not limited by outside appearances.
+When designing an operating system, the programmer seeks the simplest harmony between machine and ideas.
+This is why an operating system is easier to design."
+
+The warlord of Wu nodded and smiled.
+"That is all good and well, but which is easier to debug?"
+
+The programmer made no reply.
