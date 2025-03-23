@@ -1,0 +1,27 @@
+프로그램은 작고 민첩(敏捷)해야 하며, 그 서브루틴은 마치 진주(眞珠) 목걸이처럼 연결(連結)되어 있어야 한다.
+프로그램의 내용(內容)과 정신(精神)은 일관적(一貫的)이어야 한다.
+프로그램은 너무 작아도 너무 많아도 아니되며, 필요없는 루프나 필요없는 변수(變數)가 있어서는 아니되며, 구조(構造)가 없어도 아니되며 지나치게 경직(勁直)되어도 아니된다.
+
+프로그램은 "최소(最少) 경악(驚愕)의 법칙(法則)"을 따라야 한다.
+이 법칙이 무엇이냐고?
+프로그램은 사용자를 최소로 놀라게 하는 방향(方向)으로 반응(反應)해야 한다는 뜻이다.
+
+프로그램은 아무리 복잡(複雜)하더라도 하나의 개체(個體)처럼 동작해야 한다.
+프로그램은 외관(外觀)보다는 내부의 논리(論理)에 따라 작성되어야 한다.
+
+프로그램이 이러한 요구조건(要求條件)을 따르지 못하면 무질서(無秩序)와 혼란(混亂)이 발생한다.
+이를 고치는 유일(唯一)한 방법은 프로그램을 다시 작성하는 것 뿐이다.
+
+A program should follow the "Law of Least Astonishment".
+What is this law?
+It is simply that the program should always respond to the user in the way that astonishes him least.
+
+A program, no matter how complex, should act as a single unit.
+The program should be directed by the logic within rather than by outward appearances.
+
+If the program fails in these requirements, it will be in a state of disorder and confusion.
+The only way to correct this is to rewrite the program.
+
+A program should be light and agile, its subroutines connected like a string of pearls.
+The spirit and intent of the program should be retained throughout.
+There should be neither too little or too much, neither needless loops nor useless variables, neither lack of structure nor overwhelming rigidity.
