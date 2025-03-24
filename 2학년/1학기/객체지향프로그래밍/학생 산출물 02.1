@@ -1,0 +1,68 @@
+▣ 토의·토론 주제
+- 2장 연습문제 9번, 10번 
+- 81쪽 9번 : 2점 거리 구하는 문제 <- 두점 좌표 (x1, y1), (x2, y2) 입력받음.
+- 82쪽 10번 : 2차 방정식 근 구하는 문제, <- 2차 방정식 계수 a, b, c 입력 받음.
+- 필요 내용
+   - #include<cmath> 
+   - sqrt( ) 함수
+   - pow( x, 2) -> x*x
+
+void main(){	
+    P9( );	
+    P10()
+}
+
+xxx dist_2d(…){ … }         // P9 에서 호출
+void P9(){  … }	
+
+xxx quad_eqn(…){ … }       // P10 에서 호출
+void P10(){  … }     
+
+▣ 토의·토론 내용정리(이 부분에 코드 작성)
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double dist_2d(int x1, int y1, int x2, int y2) {
+    int a = x2 - x1;
+    int b = y2 - y1;
+    double c = sqrt((a * a) + (b * b));
+
+    return sqrt((a * a) + (b * b));
+}
+void p9() {
+    int x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+    cout << "첫번째 점의 좌표: " << x1 << y1 << endl;
+    cout << "두번째 점의 좌표: " << x2 << y2 << endl;
+    cout << dist_2d(x1, y1, x2, y2) << endl;
+}
+void quad_eqn(int a, int b, int c) {
+    int discri = pow(b, 2) - 4 * (a * c);
+    int val1, val2;
+    if (discri < 0)
+    {
+        cout << "근이 없습니다.";
+        return;
+    }
+    else
+    {
+        val1 = (-b + sqrt(pow(b, 2) - (4 * a * c))) / (2 * a);
+        val2 = (-b - sqrt(pow(b, 2) - (4 * a * c))) / (2 * a);
+    }
+    cout << "첫번째 근: " << val1 << endl << "두번째 근: " << val2;
+    return;
+}
+void p10() {
+    int a, b, c;
+    cin >> a >> b >> c;
+    quad_eqn(a, b, c);
+}
+int main() {
+    p9();
+    p10();
+}
+
+▣ 수업 성찰(배운점·느낀점)
+복학 한 후 코딩을 바로 하려니 잘 모르겠다.
+코딩 공부를 더 열심히 해야겠다. 
