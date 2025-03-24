@@ -1,0 +1,86 @@
+사과장수 문제, 유인물 참조
+
+	main{
+		p3();	// 사과 장수
+	}
+
+▣ 토의·토론 내용정리
+#include <iostream>
+using namespace std;
+
+class ApplesSeller {
+private:
+	int apple_cost;
+	int apple_cnt;
+	int money;
+
+public:
+	ApplesSeller(int apple_cost, int apple_cnt, int money)
+	{
+		this->apple_cost = apple_cost;
+		this->apple_cnt = apple_cnt;
+		this->money = money;
+	}
+	int saleApples(int cost)
+	{
+		int num = cost / apple_cost;
+		apple_cnt -= num;
+		money += cost;
+		return num;
+	}
+	void SalesResult()
+	{
+		cout << "남은 사과 : " << apple_cnt << endl;
+		cout << "판매 수익 : " << money << endl;
+	}
+};
+class ApplesBuyer {
+private:
+	int money;
+	int apple_cnt;
+
+public:
+	ApplesBuyer(int money, int apple_cnt)
+	{
+		this->money = money;
+		this->apple_cnt = apple_cnt;
+	}
+
+	void BuyApples(ApplesSeller& seller, int cost)
+	{
+		apple_cnt += seller.saleApples(cost);
+		money -= cost;
+	}
+
+	void BuyResult()
+	{
+		cout << "현재 잔액 : " << money << endl;
+		cout << "사과 개수 : " << apple_cnt << endl;
+	}
+
+};
+
+	void p3()
+	{
+		ApplesSeller seller(1000, 20, 0);
+
+		ApplesBuyer buyer(5000, 0);
+
+		buyer.BuyApples(seller, 2000);
+
+		cout << "과일 판매자의 현황" << endl;
+		seller.SalesResult();
+		cout << endl;
+
+		cout << "과일 구매자의 현황" << endl;
+		buyer.BuyResult();
+
+	}	
+int main()
+{
+	p3();
+	return 0;
+}
+
+▣ 수업 성찰(배운점·느낀점)
+공부 열심히 해야겠다.
