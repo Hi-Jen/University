@@ -1,0 +1,123 @@
+- 122 쪽 3장 연습문제 3번, 5번, 9번, 11번 
+- 함수로 배열을 전달하고 그 값을 반환 받는 방법 잘 아는지 test
+- 
+void main(){	
+	p3( );	
+	P5();
+	P9();
+	P11();
+}
+
+·p3() 에서 평균, 편차를 구하는 다음 두 함수를 호출하고 결과 값을 반환받아 출력
+	·calc_Avg(…), calc_Dev(…)  
+
+·p5() 에서 행 합, 열 합을 구하는 다음 두 함수를 호출하고 결과 값을 반환받아 출력
+	·sum_Row(…), sum_Col(…)  
+
+·p9() 에서 copy(…) 를 호출하면 copy 함수에서 복사하고 출력
+
+·p11() 에서 get_stat(…) 호출하고 3개 값을 반환받아 출력
+
+▣ 토의·토론 내용정리
+
+#include<stdio.h>
+#include <math.h>
+#pragma warning(disable:4996) 
+
+void p3() {
+    double data[10];
+    int count, i;
+    double sum = 0, avg, dev = 0;
+
+    printf("실수 자료 10개를 입력하세요 :\n");
+    for (count = 0; count < 10; count++) {
+        printf("자료 %d: ", count + 1);
+        scanf("%lf", &data[count]);
+        sum += data[count];
+    }
+
+    avg = sum / count;
+
+    for (i = 0; i < count; i++) {
+        dev += pow(data[i] - avg, 2);
+    }
+    dev = sqrt(dev / count);
+
+    printf("평균: %.2lf\n", avg);
+    printf("편차: %.2lf\n", dev);
+}
+
+void p5() {
+    int matrix[3][5] = { {12, 56, 32, 16, 98},
+                        {99, 56, 34, 41, 3},
+                        {65, 3, 87, 78, 21} };
+    int row_sum[3] = { 0 };
+    int col_sum[5] = { 0 };
+    int i, j;
+
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 5; j++) {
+            row_sum[i] += matrix[i][j];
+            col_sum[j] += matrix[i][j];
+        }
+    }
+
+    printf("행 합:\n");
+    for (i = 0; i < 3; i++) {
+        printf("행 %d: %d\n", i + 1, row_sum[i]);
+    }
+
+    printf("열 합:\n");
+    for (j = 0; j < 5; j++) {
+        printf("열 %d: %d\n", j + 1, col_sum[j]);
+    }
+}
+
+void p9() {
+    int A[] = { 1, 2, 3, 4, 5 };
+    int B[5];
+    int i;
+
+    for (int i = 0; i < 5; i++) {
+        B[i] = A[i];
+    }
+
+    printf("배열 B: ");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", B[i]);
+    }
+    printf("\n");
+}
+
+void p11() {
+    int data[] = { 4, 7, 2, 8, 5 };
+    int i;
+    int sum = 0, min = data[0], max = data[0];
+
+    for (i = 0; i < 5; i++) {
+        sum += data[i];
+        if (data[i] < min)
+            min = data[i];
+        if (data[i] > max)
+            max = data[i];
+    }
+
+    printf("합: %d\n", sum);
+    printf("최소값: %d\n", min);
+    printf("최대값: %d\n", max);
+}
+
+int main() {
+    p3();
+    printf("\n");
+    p5();
+    printf("\n");
+    p9();
+    printf("\n");
+    p11();
+
+    return 0;
+}
+
+▣ 수업 성찰(배운점·느낀점)
+열심히 해야겠다.
