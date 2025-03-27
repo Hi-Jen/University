@@ -1,1 +1,26 @@
+// 주어진 코드를 수정하여 수행한 모폴로지 연산의 예를 2개 이상 작성.
+// 강의 실습 시간에 배부된 .zip에 있는 모폴로지 연산 소스 코드 사용하여 보고서 작성하는 과제.
+// 코드 작성은 쉽지만 보고서 작성이 힘들다. 
 
+# 이진영상 생성
+from PIL import Image
+import matplotlib.pyplot as plt
+from skimage import io, color, filters
+import numpy as np
+
+im = color.rgb2gray(io.imread('/content/drive/MyDrive/task/어깨걸이극락조.jpg')) # [0.0 ~ 1.0]
+
+# 임계치 설정
+im_bin = np.copy(im)
+threshold = 0.5  # 임의로 정의된 값으로 임계치 설정
+#threshold = filters.threshold_otsu(im) # 오츄 알고리즘에 의한 최적치 찾기
+im_bin[im <= threshold] = 0
+im_bin[im > threshold] = 1
+
+plt.figure(figsize=(20,5))
+plt.gray()
+plt.subplot(131), plot_image(im, 'Gray')
+plt.subplot(132), plot_gray_hist(im*255, 'Historgram')
+plt.axvline(threshold*256, color='r')
+plt.subplot(133), plot_image(im_bin, 'Binary')
+plt.show()
