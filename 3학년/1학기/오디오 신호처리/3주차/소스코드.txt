@@ -1,0 +1,45 @@
+import numpy as np
+import scipy.io.wavfile as wav
+
+file_path = r"C:\과제업로드용\오디오 신호처리_4주차_과제\Silver Scrapes.wav"
+
+# 오디오 파일 로드
+fs, x = wav.read(file_path)
+
+# 스테레오 -> 모노 변환
+if len(x.shape) > 1:
+    x = np.mean(x, axis=1)
+
+# 오디오 일부(3~5초) 추출
+start_sec = 3
+end_sec = 5
+start_sample = int(start_sec * fs)
+end_sample = int(end_sec * fs)
+
+x_segment = x[start_sample:end_sample]
+
+# 양자화 함수 정의
+def quantize_audio(signal, bit_depth):
+    L = 2 ** bit_depth  
+    R = np.max(signal) - np.min(signal)  
+    dq = R / L  
+    xq = dq * np.round(signal / dq)  
+    return xq
+
+# 2비트, 4비트, 8비트 양자화
+bit_depths = [2, 4, 8]
+quantized_signals = {f"{b}bit": quantize_audio(x_segment, b) for b in bit_depths}
+
+# 원본 및 양자화된 파일 저장 경로
+output_files = {}
+original_path = r"C:\과제업로드용\오디오 신호처리_4주차_과제\Silver Scrapes_original.wav"
+wav.write(original_path, fs, x_segment.astype(np.int16))
+output_files["original"] = original_path
+
+# 양자화된 오디오 저장
+for b, signal in quantized_signals.items():
+    file_path = fr"C:\과제업로드용\오디오 신호처리_4주차_과제\Silver Scrapes_{b}.wav"
+    wav.write(file_path, fs, signal.astype(np.int16))
+    output_files[b] = file_path
+
+output_files
