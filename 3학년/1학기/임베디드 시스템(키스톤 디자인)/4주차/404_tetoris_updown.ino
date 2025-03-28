@@ -1,13 +1,13 @@
-int speakerPin = 57;
-int buttonPlay = 21;
-int buttonLow = 16;
-int buttonHigh = 17;
-int potPin = A0;
+int speakerPin = 57; // 스피커 
+int buttonPlay = 21; // 음악 재생
+int buttonLow = 16; // 키 높이 낮추기
+int buttonHigh = 17; // 키 높이 올리기
+int potPin = A0; // 템포 변경
 
 bool isPlaying = false;
 float pitchFactor = 1.0;
 
-int tetrisMelody[] = {
+int tetrisMelody[] = { // 테트리스 멜로디
   659, 494, 523, 587, 523, 494, 440, 
   440, 523, 659, 587, 523, 494, 523, 587, 659, 523, 440, 
   440
