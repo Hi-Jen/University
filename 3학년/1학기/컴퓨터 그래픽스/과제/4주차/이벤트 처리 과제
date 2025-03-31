@@ -1,0 +1,90 @@
+#include <windows.h>
+#include <gl/gl.h>
+#include <gl/glut.h>
+#include <cmath>
+
+#define PI 3.14159265358979323846
+
+int radius = 100;
+int num = 17;
+int mode = 3; // 0: POINTS, 1: LINES, 2: LINE_LOOP, 3: POLYGON
+float left_clip = -250.0, right_clip = 250.0, bottom_clip = -250.0, top_clip = 250.0;
+
+void Draw_Axis(void) {
+    glColor3f(1.0, 0.0, 0.0);
+    glBegin(GL_LINES);
+    glVertex2f(200, 0);
+    glVertex2f(-200, 0);
+    glEnd();
+
+    glColor3f(0.0, 1.0, 0.0);
+    glBegin(GL_LINES);
+    glVertex2f(0, -200);
+    glVertex2f(0, 200);
+    glEnd();
+}
+
+void drawCircle(void) {
+    glColor3f(0.5, 0.5, 0.5);
+    glBegin(mode == 0 ? GL_POINTS : mode == 1 ? GL_LINES : mode == 2 ? GL_LINE_LOOP : GL_POLYGON);
+    for (int i = 0; i < num; i++) {
+        float angle = 2.0f * PI * i / num;
+        float x = radius * cos(angle);
+        float y = radius * sin(angle);
+        glVertex2f(x, y);
+    }
+    glEnd();
+}
+
+void Camera_Lense(void) {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(left_clip, right_clip, bottom_clip, top_clip);
+}
+
+void RenderScene(void) {
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    Camera_Lense();
+    Draw_Axis();
+    drawCircle();
+
+    glFlush();
+}
+
+void myKey(unsigned char key, int x, int y) {
+    switch (key) {
+    case 'n': num++; break;
+    case 'm': if (num > 3) num--; break;
+    case 'w': radius += 5; break;
+    case 's': if (radius > 5) radius -= 5; break;
+    default: break;
+    }
+    glutPostRedisplay();
+}
+
+void specialKey(int key, int x, int y) {
+    switch (key) {
+    case GLUT_KEY_LEFT: left_clip -= 10; right_clip -= 10; break;
+    case GLUT_KEY_RIGHT: left_clip += 10; right_clip += 10; break;
+    case GLUT_KEY_UP: bottom_clip += 10; top_clip += 10; break;
+    case GLUT_KEY_DOWN: bottom_clip -= 10; top_clip -= 10; break;
+    case GLUT_KEY_F1: mode = 0; break;
+    case GLUT_KEY_F2: mode = 1; break;
+    case GLUT_KEY_F3: mode = 2; break;
+    case GLUT_KEY_F4: mode = 3; break;
+    }
+    glutPostRedisplay();
+}
+
+void main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitWindowPosition(50, 150);
+    glutInitWindowSize(500, 500);
+    glutCreateWindow("OpenGL Special Events");
+    glutDisplayFunc(RenderScene);
+    glutKeyboardFunc(myKey);
+    glutSpecialFunc(specialKey);
+    glutMainLoop();
+}
