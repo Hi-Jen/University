@@ -1,0 +1,22 @@
+void dijkstra_GM(int graph[ ][MAX], int n, int s) {
+        bool SP_V[MAX];
+        int distance[MAX], earlier[MAX], i, u, w;
+        for (i = 0; i ＜ n; i++) { // 초기화 
+            SP_V[i] = false; 
+            distance[i] = graph[s][i]; 
+            earlier[i] = s;
+        }
+        SP_V[s] = true;
+        loop (n-2) { // n-2번 반복
+            u = select_min(distance, n, SP_V); 
+            SP_V[u] = true;
+            for (w = 0; w < n; w++) {
+                if (SP_V[w] == false) {
+                    if (distance[u]+graph[u][w] ＜ distance[w]) { 
+                        distance[w] = distance[u] + graph[u][w]; 
+                        earlier[w] = u;
+                    }
+                }
+            }
+        }
+    }
