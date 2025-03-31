@@ -10,9 +10,9 @@ fs, x = wav.read(file_path)
 if len(x.shape) > 1:
     x = np.mean(x, axis=1)
 
-# 오디오 일부(3~5초) 추출
-start_sec = 3
-end_sec = 5
+# 오디오 일부 추출
+start_sec = 14 // 원하는 오디오의 시작 초 단위 작성 
+end_sec = 19  // 원하는 오디오의 끝 단위 작성
 start_sample = int(start_sec * fs)
 end_sample = int(end_sec * fs)
 
@@ -38,7 +38,7 @@ output_files["original"] = original_path
 
 # 양자화된 오디오 저장
 for b, signal in quantized_signals.items():
-    file_path = fr"C:\과제업로드용\오디오 신호처리_4주차_과제\Silver Scrapes_{b}.wav"
+    file_path = fr"C:\과제업로드용\오디오 신호처리_4주차_과제\re_quantized_{b}.wav"
     wav.write(file_path, fs, signal.astype(np.int16))
     output_files[b] = file_path
 
