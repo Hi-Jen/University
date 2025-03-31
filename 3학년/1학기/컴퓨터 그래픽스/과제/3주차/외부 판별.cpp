@@ -2,35 +2,35 @@
 
 using namespace std;
 
-// ¿ÜÀûÀ» ÀÌ¿ëÇÑ ¹æÇâ ÆÇº° ÇÔ¼ö
+// ì™¸ì ì„ ì´ìš©í•œ ë°©í–¥ íŒë³„ í•¨ìˆ˜
 double crossProduct(double x1, double y1, double x2, double y2) {
     return x1 * y2 - y1 * x2;
 }
 
-// Á¡ (a, b)°¡ »ï°¢Çü (x1, y1), (x2, y2), (x3, y3) ³»ºÎ¿¡ ÀÖ´ÂÁö È®ÀÎ
+// ì  (a, b)ê°€ ì‚¼ê°í˜• (x1, y1), (x2, y2), (x3, y3) ë‚´ë¶€ì— ìžˆëŠ”ì§€ í™•ì¸
 bool isInsideTriangle(double x1, double y1, double x2, double y2, double x3, double y3, double a, double b) {
-    // º¤ÅÍ Á¤ÀÇ
+    // ë²¡í„° ì •ì˜
     double cross1 = crossProduct(x2 - x1, y2 - y1, a - x1, b - y1);
     double cross2 = crossProduct(x3 - x2, y3 - y2, a - x2, b - y2);
     double cross3 = crossProduct(x1 - x3, y1 - y3, a - x3, b - y3);
 
-    // ¸ðµç ¿ÜÀûÀÇ ºÎÈ£°¡ °°À¸¸é »ï°¢Çü ³»ºÎ¿¡ ÀÖÀ½
+    // ëª¨ë“  ì™¸ì ì˜ ë¶€í˜¸ê°€ ê°™ìœ¼ë©´ ì‚¼ê°í˜• ë‚´ë¶€ì— ìžˆìŒ
     return (cross1 >= 0 && cross2 >= 0 && cross3 >= 0) || (cross1 <= 0 && cross2 <= 0 && cross3 <= 0);
 }
 
 int main() {
     double x1, y1, x2, y2, x3, y3, x, y;
-    cout << "»ï°¢Çü ¼¼ Á¡ÀÇ ÁÂÇ¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä. (x1, y1), (x2, y2), (x3, y3): ";
+    cout << "ì‚¼ê°í˜• ì„¸ ì ì˜ ì¢Œí‘œë¥¼ ìž…ë ¥í•˜ì„¸ìš”. (x1, y1), (x2, y2), (x3, y3): ";
     cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
 
-    cout << "¿øÇÏ´Â x, y ÁÂÇ¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä. (x, y): ";
+    cout << "ì›í•˜ëŠ” x, y ì¢Œí‘œë¥¼ ìž…ë ¥í•˜ì„¸ìš”. (x, y): ";
     cin >> x >> y;
 
     if (isInsideTriangle(x1, y1, x2, y2, x3, y3, x, y)) {
-        cout << "Á¡ÀÌ »ï°¢Çü ³»ºÎ¿¡ ÀÖ½À´Ï´Ù.\n";
+        cout << "ì ì´ ì‚¼ê°í˜• ë‚´ë¶€ì— ìžˆìŠµë‹ˆë‹¤.\n";
     }
     else {
-        cout << "Á¡ÀÌ »ï°¢Çü ¿ÜºÎ¿¡ ÀÖ½À´Ï´Ù.\n";
+        cout << "ì ì´ ì‚¼ê°í˜• ì™¸ë¶€ì— ìžˆìŠµë‹ˆë‹¤.\n";
     }
 
     return 0;
