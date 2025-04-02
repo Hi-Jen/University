@@ -1,0 +1,48 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from skimage import io, color
+from skimage.morphology import binary_erosion
+from skimage.draw import circle_perimeter
+
+im1 = io.imread("/content/drive/MyDrive/task/명언.png")[:, :, :3]  # 알파 채널 제거
+im2 = io.imread("/content/drive/MyDrive/task/ㄱ.png")[:, :, :3]  # 알파 채널 제거
+
+# 그레이스케일 변환
+im1_gray = color.rgb2gray(im1)
+im2_gray = color.rgb2gray(im2)
+
+# 이진화
+im1_binary = im1_gray > 0.5
+im2_binary = im2_gray > 0.5
+
+# HMT(Hit-Miss Transformation)
+A = im1_binary.copy()
+NotA = np.logical_not(A)
+
+Bon = im2_binary.copy()
+Boff = np.logical_not(Bon)
+
+find1 = binary_erosion(A, Bon)
+find2 = binary_erosion(NotA, Boff)
+
+idx1_find = np.where(find1 == 1)
+idx1_set = list(zip(idx1_find[0], idx1_find[1]))
+
+idx2_find = np.where(find2 == 1)
+idx2_set = list(zip(idx2_find[0], idx2_find[1]))
+
+comp_set = set(idx1_set).intersection(idx2_set)
+result_set = list(comp_set)
+
+im_result = im1.copy()
+
+for (row, col) in result_set:
+    rr, cc = circle_perimeter(row, col, radius=int(im2.shape[0] / 2))
+    im_result[rr, cc] = [255, 0, 0]  # 빨간색
+    rr, cc = circle_perimeter(row, col, radius=int(im2.shape[0] / 2) + 1)
+    im_result[rr, cc] = [255, 0, 0]  # 빨간색
+
+plt.figure(figsize=(20, 5))
+plt.subplot(121), plot_image(im2, "SE")
+plt.subplot(122), plot_image(im_result, "Result")
+plt.show()
