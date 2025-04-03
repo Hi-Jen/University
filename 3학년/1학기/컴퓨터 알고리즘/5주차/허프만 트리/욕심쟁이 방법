@@ -12,4 +12,3 @@ node huffman_GM(int frequency[], int n) {
         }
         return delete_min_heap(heap);
     }
-  
