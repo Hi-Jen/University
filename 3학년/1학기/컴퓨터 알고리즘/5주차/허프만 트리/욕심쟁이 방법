@@ -1,0 +1,15 @@
+node huffman_GM(int frequency[], int n) {
+        min_heap heap;
+        node root, left, right; 
+        init_min_heap(heap, frequency, n); 
+        loop (n-1) {
+            left = delete_min_heap(heap); 
+            right = delete_min_heap(heap); 
+            root->left = left;
+            root->right =right;
+            root->frequency = left->frequency + right->frequency; 
+            insert_min_heap(heap, root);
+        }
+        return delete_min_heap(heap);
+    }
+  
