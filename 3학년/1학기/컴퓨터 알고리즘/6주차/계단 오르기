@@ -1,0 +1,21 @@
+void iterative_stairs(int n) {
+        int i;
+        for (i = 1; i <= n; i++) 계단을 하나 올라감;
+        printf(“더 올라갈 계단이 없습니다.“);
+    }
+   
+    void recursive_stairs(int n) {
+        if (n) {
+            계단을 하나 올라감;
+            recursive_stairs(n-1);
+        }
+        else printf(“더 올라갈 계단이 없습니다.“);
+    }
+    
+    void recursive_stairs(int n) {
+        if (n) {
+            recursive_stairs(n-1);
+            n번째 계단을 하나 올라감;
+        }
+        else printf(“더 올라갈 계단이 없습니다.“);
+    }
