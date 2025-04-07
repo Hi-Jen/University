@@ -1,0 +1,2 @@
+https://pythontutor.com/render.html#mode=edit
+https://pythontutor.com/render.html#code=%23include%20%3Ciostream%3E%0Ausing%20namespace%20std%3B%0A%0Aint%20fibo%28int%20n%29%20%7B%0A%20%20if%20%28n%3C%3D1%29%20return%20n%3B%0A%20%20return%20fibo%28n-1%29%20%2B%20fibo%28n-2%29%3B%0A%7D%0A%0Aint%20main%28%29%20%7B%0A%20%20cout%20%3C%3C%20fibo%284%29%3B%0A%20%20return%200%3B%0A%7D&cumulative=false&heapPrimitives=nevernest&mode=edit&origin=opt-frontend.js&py=cpp_g%2B%2B9.3.0&rawInputLstJSON=%5B%5D&textReferences=false
