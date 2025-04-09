@@ -2,6 +2,7 @@
 ---------------------------
 - 대학 공부 및 과제 업로드
 ---------------------------
+<img src="images/A_banner_for_a_GitHub_repository_titled_The_Legac.png" width="80%" />
 # 🧙‍♀️ The Legend of Hi-Jen the Sleepless
 
 > "Code well, sleep less, leave no bug behind."
