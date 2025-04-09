@@ -6,9 +6,6 @@
 
 > "Code well, sleep less, leave no bug behind."
 
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/0000000/legendary_hi-jen-banner.png" alt="Hi-Jen Banner" width="80%" />
-</div>
 
 ---
 
@@ -66,9 +63,6 @@ Welcome to the realm where deadlines are dragons and group projects are betrayal
 ---
 
 ## 🏅 Order of the Sleepless — 인증 배지 시스템
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/0000000/sleepless_badges.png" width="400px" />
-</div>
 
 | Badge | Name                  | Requirement                  |
 |-------|-----------------------|------------------------------|
