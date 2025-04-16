@@ -1,0 +1,15 @@
+태양계 시뮬레이션을 만들어 봅시다.
+태양(중심원)
+지구(태양을 중심으로 궤도를 도는 원)
+달(지구를 중심으로 궤도를 도는 원)
+
+변환(Transformation)
+
+1. 위치이동변환 
+- glTranslatef( tx, ty, tz);
+
+2. 회전변환 
+      - glRotatef( theta, rx, ry, rz);
+
+3. 크기변환 
+      - glScalef( sx, sy, sz);
