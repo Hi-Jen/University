@@ -1,0 +1,52 @@
+1. 알고리즘
+
+■ 알고리즘 아이디어
+
+이진탐색과 유사: 배열을 반으로 나눠 각각의 최대값을 구한 후 이 가운데 더 큰 값을 최대값으로
+월드컵 축구에서 16강전, 8강전, 준결승, 결승에 이르는 토너먼트 방식
+분할: 배열을 단순히 반쪽으로 나누기
+결합: 두 부문제의 해답 중에 큰 값을 고르기
+
+■ [알고리즘 3.6] 최대값 찾기(분할정복)
+
+[0000]    int maximum_DC(int list[ ], int low, int high) {
+[0001]        int middle, lmax, hmax;
+[0002]        if (low == high) return list[low];
+[0003]        else if (low == high-1) {
+[0004]            if (list[low] ＞= list[high]) return list[low];
+[0005]            else return list[high];
+[0006]        } else {
+[0007]            middle =(low + high)/2;
+[0008]            lmax=maximum_DC(list, low, middle);
+[0009]            hmax=maximum_DC(list, middle+1, high);
+[0010]            if (lmax ＞= hmax) return lmax;
+[0011]            else return hmax;
+[0012]        }
+[0013]    }
+[0014]    
+[0000]    int max(int lst[ ], int l, int h) {
+[0001]        if (l == h) return lst[l];
+[0002]        int lm = max(lst, l, (l+h)/2);
+[0003]        int hm = max(lst, (l+h)/2+1, h)
+[0004]        if (lm ＞= hm> return lm;
+[0005]        else return hm;
+[0006]    }
+
+2. 복잡도 분석
+
+■ 복잡도 분석
+
+부문제는 두 개이고 부문제의 크기는 이전 단계에 비해 대략 절반으로 줄어듦
+분할 과정은 O(1)이고 결합 과정은 O(1) 따라서
+T(n)=2T(n/2)+O(1)
+= 2{2T(n/4)+O(1)}+O(1)
+= 4T(n/4)+2O(1)+O(1)
+= 4{2T(n/8)+O(1)}+2O(1)+O(1) 
+= 8T(n/8)+4O(1)+2O(1)+O(1)
+= 23T(n/23)+(23−1)O(1)
+...
+= 2log2nT(n/2log2n)+(2log2n−1)O(1)
+= nT(n/n)+(n−1)O(1)
+= nT(1)+(n−1)O(1)=nO(1)+(n−1)O(1)
+= O(n) 
+마스터 정리에 따르면 a=2, b=2, c=0이므로 a > b^c인 경우이고, logb(a)=1이므로 T(n)=O(n)
