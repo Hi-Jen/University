@@ -1,0 +1,225 @@
+문제 1
+
+main영역에서 반드시 써야됨 (다른 함수에서 쓸 수 있지만 오류 조심)
+1.glEnable(GL_DEPTH_TEST);
+2.glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+
+display쪽 영역 (다시그리는함수)
+3.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+
+>>실제 display에서 반드시 써야됨
+은면제거법 : Z-버퍼 적용하기 
+
+쓰지않을때 그려질때 기준으로 보이지 않는 영역은 그릴 수 없음(그리지 않음)
+
+멀이 있는것부터 그린다 (z영역까지 계산한다)
+-----------------------------------------------------------------------------
+문제2 = 파일열기
+
+void loadModel(const char* filename) {
+    FILE* fp = NULL;
+    fopen_s(&fp, filename, "r");
+    if (!fp) {
+        printf("파일을 열 수 없습니다.\n");
+        exit(1);
+    }
+
+
+    fscanf_s(fp, "%d", &vertexCount);
+    vertices = (Vertex*)malloc(sizeof(Vertex) * vertexCount);
+    float xmin = FLT_MAX, xmax = -FLT_MAX;
+    float ymin = FLT_MAX, ymax = -FLT_MAX;
+    float zmin = FLT_MAX, zmax = -FLT_MAX;
+
+    for (int i = 0; i < vertexCount; ++i) {
+        fscanf_s(fp, "%f %f %f", &vertices[i].x, &vertices[i].y, &vertices[i].z);
+        if (vertices[i].x < xmin) xmin = vertices[i].x;
+        if (vertices[i].x > xmax) xmax = vertices[i].x;
+        if (vertices[i].y < ymin) ymin = vertices[i].y;
+        if (vertices[i].y > ymax) ymax = vertices[i].y;
+        if (vertices[i].z < zmin) zmin = vertices[i].z;
+        if (vertices[i].z > zmax) zmax = vertices[i].z;
+    }
+
+    fscanf_s(fp, "%d", &faceCount);
+    faces = (Face*)malloc(sizeof(Face) * faceCount);
+    for (int i = 0; i < faceCount; ++i) {
+        fscanf_s(fp, "%d %d %d", &faces[i].v1, &faces[i].v2, &faces[i].v3);
+    }
+    fclose(fp);
+
+    centerX = (xmin + xmax) / 2.0f;
+    centerY = (ymin + ymax) / 2.0f;
+    centerZ = (zmin + zmax) / 2.0f;
+    float dx = xmax - xmin, dy = ymax - ymin, dz = zmax - zmin;
+    maxRange = (dx > dy ? (dx > dz ? dx : dz) : (dy > dz ? dy : dz));
+}
+==> 파일열기 및 위치계산
+
+gluLookAt(centerX, centerY, centerZ + maxRange * 1.5f,
+        centerX, centerY, centerZ,
+        0.0f, 1.0f, 0.0f);
+
+glMatrixMode(GL_PROJECTION);
+glLoadIdentity();
+gluPerspective(45.0, (double)w / h, 0.1, maxRange * 10.0);
+glMatrixMode(GL_MODELVIEW);
+
+==> 카메라 위치 계산
+--------------------------------------------------------------------
+문제3(추정) 
+3d프린터에서 면은 어떻게 구하는가? 
+
+스캐너 : 점먼저 측정(점군) ==> 삼각분할 사용
+
+3D 모델은 보통 메쉬(mesh) 구조로 표현됩니다.
+메쉬는 정점(Vertex) 리스트와 면(Face) 리스트로 구성
+인덱스 정보!!!!!!
+
+삼각분할(삼각형 메쉬)
+대부분의 3D 프린터 및 그래픽 시스템은 삼각형 메쉬를 사용합니다.
+삼각형은 3개의 정점 인덱스로 정의됩니다.
+예시: Face(562, 905, 1465)는 562, 905, 1465번 정점을 연결해 하나의 삼각형 면을 만듭니다
+--------------------------------------------------------------------
+문제4 3D 구를 만들때 생길 수 있는 문제점은?
+
+void Sphere(void) {
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	// 1. 정점 계산 (한 번만 실행해도 되지만, 간단히 매 프레임 계산)
+	for (int i = 0; i < N; i++) { // 경도
+		float theta = 2.0f * PI * i / N;
+		for (int j = 0; j <= M; j++) { // 위도
+			float phi = PI * j / M;
+			ver[i][j][0] = sphere_radius * sinf(phi) * cosf(theta);
+			ver[i][j][1] = sphere_radius * sinf(phi) * sinf(theta);
+			ver[i][j][2] = sphere_radius * cosf(phi);
+		}
+	}
+
+	// 2. 면(폴리곤) 그리기
+	glColor3f(1.0, 1.0, 0.0); // 구 색상
+	for (int i = 0; i < N; i++) {
+		int inext = (i + 1) % N; // 경도 wrap-around
+		for (int j = 0; j < M; j++) {
+			glBegin(GL_POLYGON);
+			glVertex3fv(ver[i][j]);
+			glVertex3fv(ver[inext][j]);
+			glVertex3fv(ver[inext][j + 1]);
+			glVertex3fv(ver[i][j + 1]);
+			glEnd();
+		}
+	}
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+}
+
+경도와 위도
+36 <
+18 <= 으로 써야됨
+마지막 부분과 처음부분 연결해야됨
+
+??? 누군가 알겠지라는 생각을 한다
+
+-------------------------------------------------------------------
+문제 5 베이지어 곡선
+
+struct Point {
+    float x, y;
+};
+
+// 제어점 배열 (예시: 4개)
+Point Points[4] = {
+    {100, 100}, {200, 300}, {300, 300}, {400, 100}
+};
+const int numPoints = 4;
+
+Point bezier(float t, const Point* points, int n) {
+    int degree = n - 1;
+    Point p = {0, 0};
+    for (int i = 0; i <= degree; ++i) {
+        // 이항계수 계산
+        float b = 1;
+        for (int j = 1; j <= i; ++j)
+            b *= float(degree - j + 1) / j;
+        float c = b * pow(1 - t, degree - i) * pow(t, i);
+        p.x += c * points[i].x;
+        p.y += c * points[i].y;
+    }
+    return p;
+}
+
+===> c++ 코드
+
+B(t)=(1−t) 2P 0 +2(1−t)tP 1+t 2P 2       ,0≤t≤1
+--------------------------------------------------------
+
+문제 6 geometry 양함수/음함수 표현법
+x^2 + y^2 = 1 or r^2   ::: 양함수
+
+x = rcos0
+y = rsin0 ::::: 음함수
+
+원에 대한 표현법
+중심이 (a, b), 반지름 r인 원
+
+양함수: 
+(x−a)^2+(y−b)^2=r^2
+
+음함수:
+x=a+rcosθ
+y=b+rsinθ
+
+장점	
+>양
+- 단순한 함수는 구현이 쉽다
+- 곡선이 더 부드러움
+>음
+- 모든 곡선(원, 타원, 복잡 곡선) 표현 가능
+- 점이 외부에 있는지 안에 있는지 판단하기 좋음
+단점	
+>양
+- 원, 타원 등은 y가 ±로 나뉘고, 루프가 복잡
+- 일부 곡선은 x→y로 표현 불가
+- 회전, 변환에 불리	
+>음
+- 매개변수식 유도 필요
+- 단순 직선 등은 오히려 복잡할 수 있음
+---------------------------------------------------------
+문제 7 raycasting - ray를 쏴서 3차원 물체 교챠여부를 파악하는방법
+
+가장 가까운 놈 구하기 (물체는 삼각형)
+그룹화로 공간 나누기 (preprocessing)
+
+--------------------------------------------------------
+
+glOrtho
+매개변수	의미
+left	투영 공간의 왼쪽(x축 최소값) 절단면 위치
+right	투영 공간의 오른쪽(x축 최대값) 절단면 위치
+bottom	투영 공간의 아래(y축 최소값) 절단면 위치
+top	투영 공간의 위(y축 최대값) 절단면 위치
+zNear	투영 공간의 앞(z축 최소값) 절단면 위치 (가까운 평면)
+zFar	투영 공간의 뒤(z축 최대값) 절단면 위치 (먼 평면)
+
+gluperspective
+--------------------------------------------------------
+
+void camera(void) {
+	double camera_x, camera_y, camera_z;
+	camera_x = camera_r * cos(camera_theta) * cos(camera_phi);
+	camera_y = camera_r * sin(camera_theta) * cos(camera_phi);
+	camera_z = camera_r * sin(camera_phi);
+
+	double up_z = (cos(camera_phi) >= 0) ? 1.0 : -1.0;
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluLookAt(camera_x, camera_y, camera_z, 0.0, 0.0, 0.0, 0.0, 0.0, up_z);
+}
+-------------------------------------------------------------------
+glMatrixMode(GL_MODELVIEW);
+glLoadIdentity();
+gluLookAt(
+    5.0f, 3.0f, 2.0f,  // 카메라 위치
+    0.0f, 0.0f, 0.0f,  // 응시점
+    0.0f, 1.0f, 0.0f   // 업 벡터
+);
